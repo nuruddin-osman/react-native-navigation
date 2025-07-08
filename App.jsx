@@ -3,6 +3,8 @@ import Home from './src/screens/Home';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import About from './src/screens/About';
+import Contacts from './src/screens/Contacts';
+import Services from './src/screens/Services';
 
 const Stack = createNativeStackNavigator();
 const App = () => {
@@ -18,6 +20,16 @@ const App = () => {
           name="About"
           component={About}
           options={{ title: 'About' }}
+        />
+        <Stack.Screen
+          name="Services"
+          component={Services}
+          options={{ title: 'Services' }}
+        />
+        <Stack.Screen
+          name="Contacts"
+          component={Contacts}
+          options={{ title: 'Contacts' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
