@@ -1,18 +1,21 @@
 import { View, Text, Button } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { styles } from '../style';
 
-const Home = () => {
+const Home = ({ route }) => {
   const navigation = useNavigation();
+  const { users } = route.params;
+  console.log('====================================');
+  console.log(users);
+  console.log('====================================');
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text style={{ fontSize: 20 }}>
-        Hello World! Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-        Cumque, accusantium! Eveniet amet perferendis atque, fugit molestias
-        deleniti ex laudantium error fugiat odio placeat perspiciatis labore,
-        inventore neque officia hic nostrum! Magnam ad veniam odio dolore, velit
-        et ex suscipit odit!
-      </Text>
+    <View style={[styles.paddings, { flex: 1 }]}>
+      <View style={styles.card}>
+        <Text style={{ fontSize: 20 }}>{users.name}</Text>
+        <Text style={{ fontSize: 20 }}>{users.email}</Text>
+      </View>
+
       <Button
         title="Go to About"
         onPress={() => navigation.navigate('About')}

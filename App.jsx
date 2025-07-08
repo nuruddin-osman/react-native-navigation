@@ -5,12 +5,18 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import About from './src/screens/About';
 import Contacts from './src/screens/Contacts';
 import Services from './src/screens/Services';
+import Login from './src/screens/Login';
 
 const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{ title: 'Login' }}
+        />
         <Stack.Screen
           name="Home"
           component={Home}
