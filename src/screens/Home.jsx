@@ -5,20 +5,28 @@ import { styles } from '../style';
 
 const Home = ({ route }) => {
   const navigation = useNavigation();
-  const { users } = route.params;
+  const { users } = route?.params || {};
   console.log('====================================');
   console.log(users);
   console.log('====================================');
   return (
     <View style={[styles.paddings, { flex: 1 }]}>
-      <View style={styles.card}>
-        <Text style={{ fontSize: 20 }}>{users.name}</Text>
-        <Text style={{ fontSize: 20 }}>{users.email}</Text>
-      </View>
+      {users ? (
+        <View style={styles.card}>
+          <Text style={{ fontSize: 20 }}>{users.name}</Text>
+          <Text style={{ fontSize: 20 }}>{users.email}</Text>
+        </View>
+      ) : (
+        <Text>No user data found</Text>
+      )}
 
       <Button
         title="Go to About"
         onPress={() => navigation.navigate('About')}
+      />
+      <Button
+        title="Go to Login"
+        onPress={() => navigation.navigate('Login')}
       />
     </View>
   );

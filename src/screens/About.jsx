@@ -7,14 +7,7 @@ const About = () => {
   return (
     <View>
       <Text>About</Text>
-      <Button
-        onPress={() => navigation.push('Home')}
-        title="Go to Details... again"
-      />
-      <Button
-        onPress={() => navigation.popTo('Contacts')}
-        title="Go to Contacts"
-      />
+      <Button onPress={() => navigation.navigate('Home')} title="Home..." />
     </View>
   );
 };
