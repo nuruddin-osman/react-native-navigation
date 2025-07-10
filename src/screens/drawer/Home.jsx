@@ -1,12 +1,12 @@
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import React from 'react';
 
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
     <View>
-      <Text>Home</Text>
+      <Text>Home Screen</Text>
+      <Button title="Open Drawer" onPress={() => navigation.toggleDrawer()} />
     </View>
   );
 };
-
 export default Home;
