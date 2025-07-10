@@ -6,10 +6,20 @@ import About from './src/screens/About';
 import Contacts from './src/screens/Contacts';
 import Services from './src/screens/Services';
 import Login from './src/screens/Login';
-import { Button, StatusBar, View } from 'react-native';
+import { Alert, Button, StatusBar, View } from 'react-native';
+import My from './src/components/My';
 
 const Stack = createNativeStackNavigator();
 const App = () => {
+  const handleMy = () => <My />;
+
+  // const headerRight = () => (
+  //   <Button onPress={() => alert('This is a button!')} title="About" />
+  // );
+  // const headerLeft = () => (
+  //   <Button onPress={() => alert('This is a button!')} title="Hello" />
+  // );
+
   return (
     <NavigationContainer>
       <>
@@ -47,18 +57,15 @@ const App = () => {
           <Stack.Screen
             name="Home"
             component={Home}
-            options={{ headerShown: false }}
+            options={{ title: 'Home' }}
           />
           <Stack.Screen
             name="About"
             component={About}
             options={{
-              headerRight: () => (
-                <Button
-                  onPress={() => alert('This is a button!')}
-                  title="About"
-                />
-              ),
+              // headerRight: headerRight,
+              // headerLeft: headerLeft,
+              headerTitle: handleMy,
             }}
           />
           <Stack.Screen
