@@ -21,12 +21,13 @@ import { NavigationContainer } from '@react-navigation/native';
 //   }
 //   return <Icon name={iconName} size={size} color={color} />;
 // };
-
+import Icon from 'react-native-vector-icons/Ionicons';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Home from './src/screens/topTab/Home';
 import Calls from './src/screens/topTab/Calls';
 import Status from './src/screens/topTab/Status';
 import { StatusBar, View } from 'react-native';
+import { styles } from './src/style';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -75,10 +76,30 @@ const App = () => {
           }}
         />
       </Tab.Navigator> */}
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarLabelStyle: { fontSize: 20, fontWeight: 'bold' },
+          tabBarStyle: { backgroundColor: '#2d2d2d' },
+          tabBarActiveTintColor: 'orange',
+          tabBarInactiveTintColor: 'white',
+          tabBarIndicatorStyle: styles.tabBarIndicatorStyles,
+        }}
+      >
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Calls" component={Calls} />
-        <Tab.Screen name="Status" component={Status} />
+        <Tab.Screen
+          name="Status"
+          component={Status}
+          options={{
+            tabBarIcon: ({ focused, color, size }) => (
+              <Icon
+                name={focused ? 'ellipse-outline' : 'ellipse'}
+                color={color}
+                size={size}
+              />
+            ),
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );

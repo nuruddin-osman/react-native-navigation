@@ -6,6 +6,11 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 10,
     flex: 1,
   },
+  containers: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   heading: {
     fontSize: 36,
     textAlign: 'center',
@@ -43,5 +48,10 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.25, // শ্যাডো ট্রান্সপারেন্সি যোগ করা
     shadowRadius: 3.84, // রেডিয়াস ঠিক করা
     elevation: 5, // অ্যান্ড্রয়েডের জন্য শ্যাডো
+  },
+  tabBarIndicatorStyles: {
+    backgroundColor: 'red',
+    height: 3,
+    borderRadius: 2,
   },
 });
