@@ -5,10 +5,12 @@ import BgNatureImg from '../../assets/images/natural01.jpg';
 import BgNatureImg2 from '../../assets/images/nature-train.jpg';
 import { useDispatch, useSelector } from 'react-redux';
 import { decrement, increment, reset } from '../../redux/slice/counterSlice';
+import { useStores } from '../../zustand/store';
 
 const Status = () => {
   const counters = useSelector(state => state.counter.value);
   const dispatch = useDispatch();
+  const { increments, decrements, resets, bears } = useStores();
   return (
     <View className="relative">
       {/* <ImageBackground source={BgNatureImg}  className='h-full w-full object-cover' >
@@ -23,6 +25,12 @@ const Status = () => {
         <Button title="couns" onPress={() => dispatch(increment())} />
         <Button title="Less" onPress={() => dispatch(decrement())} />
         <Button title="Reset" onPress={() => dispatch(reset())} />
+      </View>
+      <View className="flex flex-col gap-4 w-72 mx-auto bg-slate-500 m-6 p-5 rounded-md">
+        <Text className="text-[80px]">{bears}</Text>
+        <Button title="couns" onPress={increments} />
+        <Button title="Less" onPress={decrements} />
+        <Button title="Reset" onPress={resets} />
       </View>
     </View>
   );
