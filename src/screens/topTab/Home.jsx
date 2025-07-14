@@ -42,7 +42,7 @@ const Home = () => {
   }, []);
   return (
     <View style={styles.containers}>
-      <Text style={styles.card}>Home</Text>
+      <Text className="text-5xl font-bold text-[orange] my-5">Home</Text>
       <TextInput
         placeholder="enter"
         onChangeText={setUser}
