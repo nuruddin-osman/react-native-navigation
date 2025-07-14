@@ -1,7 +1,8 @@
 import React from 'react';
 import './global.css';
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
+// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import Home from './src/screens/tabBottom/Home';
 // import Earn from './src/screens/tabBottom/Earn';
 // import Delta from './src/screens/tabBottom/Delta';
@@ -29,27 +30,29 @@ import Calls from './src/screens/topTab/Calls';
 import Status from './src/screens/topTab/Status';
 import { StatusBar, View } from 'react-native';
 import { styles } from './src/style';
+import { store } from './src/redux/store';
 
 const Tab = createMaterialTopTabNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <View
-        style={{
-          paddingTop: StatusBar.currentHeight,
-          backgroundColor: '#8000ff',
-        }}
-      >
-        <StatusBar
-          animated={true}
-          barStyle="light-content"
-          hidden={false}
-          translucent={true}
-          showHideTransition="fade"
-        />
-      </View>
-      {/* <Tab.Navigator
+    <Provider store={store}>
+      <NavigationContainer>
+        <View
+          style={{
+            paddingTop: StatusBar.currentHeight,
+            backgroundColor: '#8000ff',
+          }}
+        >
+          <StatusBar
+            animated={true}
+            barStyle="light-content"
+            hidden={false}
+            translucent={true}
+            showHideTransition="fade"
+          />
+        </View>
+        {/* <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) =>
             getIconBars(route.name, focused, color, size),
@@ -77,32 +80,33 @@ const App = () => {
           }}
         />
       </Tab.Navigator> */}
-      <Tab.Navigator
-        screenOptions={{
-          tabBarLabelStyle: { fontSize: 20, fontWeight: 'bold' },
-          tabBarStyle: { backgroundColor: '#2d2d2d' },
-          tabBarActiveTintColor: 'orange',
-          tabBarInactiveTintColor: 'white',
-          tabBarIndicatorStyle: styles.tabBarIndicatorStyles,
-        }}
-      >
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Calls" component={Calls} />
-        <Tab.Screen
-          name="Status"
-          component={Status}
-          options={{
-            tabBarIcon: ({ focused, color, size }) => (
-              <Icon
-                name={focused ? 'ellipse-outline' : 'ellipse'}
-                color={color}
-                size={size}
-              />
-            ),
+        <Tab.Navigator
+          screenOptions={{
+            tabBarLabelStyle: { fontSize: 20, fontWeight: 'bold' },
+            tabBarStyle: { backgroundColor: '#2d2d2d' },
+            tabBarActiveTintColor: 'orange',
+            tabBarInactiveTintColor: 'white',
+            tabBarIndicatorStyle: styles.tabBarIndicatorStyles,
           }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+        >
+          <Tab.Screen name="Home" component={Home} />
+          <Tab.Screen name="Calls" component={Calls} />
+          <Tab.Screen
+            name="Status"
+            component={Status}
+            options={{
+              tabBarIcon: ({ focused, color, size }) => (
+                <Icon
+                  name={focused ? 'ellipse-outline' : 'ellipse'}
+                  color={color}
+                  size={size}
+                />
+              ),
+            }}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 };
 
