@@ -31,6 +31,7 @@ import Status from './src/screens/topTab/Status';
 import { StatusBar, View } from 'react-native';
 import { styles } from './src/style';
 import { store } from './src/redux/store';
+import Earn from './src/screens/topTab/Earn';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -91,6 +92,7 @@ const App = () => {
         >
           <Tab.Screen name="Home" component={Home} />
           <Tab.Screen name="Calls" component={Calls} />
+          <Tab.Screen name="Earn" component={Earn} />
           <Tab.Screen
             name="Status"
             component={Status}
