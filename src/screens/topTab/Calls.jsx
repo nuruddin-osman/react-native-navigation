@@ -7,7 +7,7 @@ const Calls = () => {
   return (
     <View style={styles.containers}>
       <Text style={styles.card}>Calls</Text>
-      <Parent/>
+      <Parent />
     </View>
   );
 };

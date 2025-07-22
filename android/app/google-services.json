@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1037403332938",
+    "project_id": "reactnativefirebase-82db2",
+    "storage_bucket": "reactnativefirebase-82db2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037403332938:android:f1b263f86a848ad0fda1b3",
+        "android_client_info": {
+          "package_name": "com.navigation2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALscDsn6hw_Yq_Bhbj7a06FA17xXZ7syk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
