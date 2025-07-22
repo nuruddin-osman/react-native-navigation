@@ -31,13 +31,13 @@ import HomeScreen from './src/screens/Home';
 import AboutScreen from './src/screens/About';
 import LoginScreen from './src/auth/Login';
 import RegistrationScreen from './src/auth/Registration';
+import ResetPasswordScreen from './src/auth/ResetPassword';
 import Calls from './src/screens/topTab/Calls';
 import Status from './src/screens/topTab/Status';
 import { StatusBar, View } from 'react-native';
 import { styles } from './src/style';
 import { store } from './src/redux/store';
 import Earn from './src/screens/topTab/Earn';
-import SignUp from './src/screens/tabBottom/SignUp';
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -111,6 +111,11 @@ const MainStack = () => {
         name="RegistrationScreen"
         component={RegistrationScreen}
         options={{ title: 'Registration' }}
+      />
+      <Stack.Screen
+        name="ResetPasswordScreen"
+        component={ResetPasswordScreen}
+        options={{ title: 'Password Reset' }}
       />
     </Stack.Navigator>
   );

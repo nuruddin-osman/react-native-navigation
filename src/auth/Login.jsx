@@ -61,6 +61,14 @@ const Login = () => {
         </TouchableOpacity>
       </View>
       <View>
+        <Text
+          onPress={() => navigation.navigate('ResetPasswordScreen')}
+          className="text-blue-700 font-bold text-2xl"
+        >
+          Forget password
+        </Text>
+      </View>
+      <View>
         <Text className="text-xl text-black">
           You have no accout? go to{' '}
           <Text

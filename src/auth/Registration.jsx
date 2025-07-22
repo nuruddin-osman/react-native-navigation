@@ -14,6 +14,7 @@ const Registration = () => {
     } else {
       try {
         await registerUser(email, password);
+        navigation.navigate('LoginScreen');
       } catch (error) {
         Alert.alert(error.message);
       }

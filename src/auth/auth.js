@@ -2,6 +2,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   sendEmailVerification,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
 } from '@react-native-firebase/auth';
 import { Alert } from 'react-native';
@@ -29,6 +30,19 @@ export const registerUser = (email, password) => {
 };
 
 export const loginUser = async (email, password) => {
+  // await signInWithEmailAndPassword(auth, email, password)
+  //   .then(({ user }) => {
+  //     return { emailVerified: user.emailVerified };
+  //   })
+  //   .catch(error => {
+  //     if (error.code === 'auth/invalid-email') {
+  //       Alert.alert('Incorrect email address');
+  //     } else if (error.code === 'auth/user-not-found') {
+  //       Alert.alert('User not found');
+  //     } else {
+  //       Alert.alert(error.message);
+  //     }
+  //   });
   try {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
     return { emailVerified: user.emailVerified };
@@ -42,4 +56,14 @@ export const loginUser = async (email, password) => {
     }
     throw error;
   }
+};
+
+export const PasswordReset = async email => {
+  await sendPasswordResetEmail(auth, email)
+    .then(() => {
+      Alert.alert(`reset email sent to ${email}`);
+    })
+    .catch(error => {
+      console.log(error);
+    });
 };
