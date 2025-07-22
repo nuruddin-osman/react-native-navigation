@@ -7,13 +7,30 @@ import {
   Button,
 } from 'react-native';
 import React, { useState } from 'react';
-import { registerUser } from './auth';
 import { useNavigation } from '@react-navigation/native';
+import { loginUser } from './auth';
 
-const Registration = () => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
+
+  const handleLogin = async () => {
+    if (!email || !password) {
+      Alert.alert('email or password field is empty');
+    }
+    try {
+      const { emailVerified } = await loginUser(email, password);
+      if (emailVerified) {
+        Alert.alert('Login Successful', 'Go to Home');
+        navigation.navigate('HomeScreen');
+      } else {
+        Alert.alert('Error', 'Email in not verfied');
+      }
+    } catch (error) {
+      Alert.alert(error.message);
+    }
+  };
 
   return (
     <View className="bg-slate-300 p-5 rounded-md flex items-center justify-center w-3/4 mx-auto mt-10">
@@ -36,7 +53,10 @@ const Registration = () => {
           secureTextEntry
           className="bg-white text-xl outline-none border border-[#000] mb-2 px-4 rounded-md"
         />
-        <TouchableOpacity className="bg-orange-400  font-semibold rounded-sm w-full py-3">
+        <TouchableOpacity
+          onPress={handleLogin}
+          className="bg-orange-400  font-semibold rounded-sm w-full py-3"
+        >
           <Text className="text-center text-2xl text-white">Login</Text>
         </TouchableOpacity>
       </View>
@@ -55,4 +75,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default Login;
