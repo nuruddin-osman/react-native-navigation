@@ -7,7 +7,10 @@ const About = () => {
   return (
     <View>
       <Text>About</Text>
-      <Button onPress={() => navigation.navigate('Home')} title="Home..." />
+      <Button
+        onPress={() => navigation.navigate('HomeScreen')}
+        title="Home..."
+      />
     </View>
   );
 };

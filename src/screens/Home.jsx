@@ -22,11 +22,11 @@ const Home = ({ route }) => {
 
       <Button
         title="Go to About"
-        onPress={() => navigation.navigate('About')}
+        onPress={() => navigation.navigate('AboutScreen')}
       />
       <Button
         title="Go to Login"
-        onPress={() => navigation.navigate('Login')}
+        onPress={() => navigation.navigate('LoginScreen')}
       />
     </View>
   );

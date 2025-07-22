@@ -25,7 +25,12 @@ import { NavigationContainer } from '@react-navigation/native';
 // };
 import Icon from 'react-native-vector-icons/Ionicons';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './src/screens/topTab/Home';
+import HomeScreen from './src/screens/Home';
+import AboutScreen from './src/screens/About';
+import LoginScreen from './src/auth/Login';
+import RegistrationScreen from './src/auth/Registration';
 import Calls from './src/screens/topTab/Calls';
 import Status from './src/screens/topTab/Status';
 import { StatusBar, View } from 'react-native';
@@ -35,6 +40,7 @@ import Earn from './src/screens/topTab/Earn';
 import SignUp from './src/screens/tabBottom/SignUp';
 
 const Tab = createMaterialTopTabNavigator();
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
@@ -54,34 +60,7 @@ const App = () => {
             showHideTransition="fade"
           />
         </View>
-        {/* <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) =>
-            getIconBars(route.name, focused, color, size),
-          tabBarActiveTintColor: 'red',
-          tabBarInactiveTintColor: 'blue',
-          tabBarLabelStyle: {
-            fontSize: 16,
-            fontFamily: 'Georgia',
-            fontWeight: 700,
-          },
-        })}
-      >
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Earn" component={Earn} />
-        <Tab.Screen name="Delta" component={Delta} />
-        <Tab.Screen
-          name="Task"
-          component={Task}
-          options={{
-            tabBarBadge: 3,
-            tabBarBadgeStyle: {
-              color: 'black',
-              backgroundColor: 'yellow',
-            },
-          }}
-        />
-      </Tab.Navigator> */}
+
         <Tab.Navigator
           screenOptions={{
             tabBarLabelStyle: { fontSize: 20, fontWeight: 'bold' },
@@ -91,27 +70,49 @@ const App = () => {
             tabBarIndicatorStyle: styles.tabBarIndicatorStyles,
           }}
         >
-          <Tab.Screen name="Home" component={Home} />
-          <Tab.Screen name="Calls" component={Calls} />
-          <Tab.Screen name="Earn" component={Earn} />
-          <Tab.Screen name="SignUp" component={SignUp} />
           <Tab.Screen
-            name="Status"
-            component={Status}
+            name="Main"
+            component={MainStack}
             options={{
-              tabBarIcon: ({ focused, color, size }) => (
-                <Icon
-                  name={focused ? 'ellipse-outline' : 'ellipse'}
-                  color={color}
-                  size={size}
-                />
+              tabBarIcon: ({ color, size }) => (
+                <Icon name="home" color={color} size={size} />
               ),
+              tabBarLabel: 'Home',
             }}
           />
+          <Tab.Screen name="Calls" component={Calls} />
+          <Tab.Screen name="Earn" component={Earn} />
+          <Tab.Screen name="Status" component={Status} />
         </Tab.Navigator>
       </NavigationContainer>
     </Provider>
   );
 };
 
+const MainStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="AboutScreen"
+        component={AboutScreen}
+        options={{ title: 'About' }}
+      />
+      <Stack.Screen
+        name="LoginScreen"
+        component={LoginScreen}
+        options={{ title: 'Login' }}
+      />
+      <Stack.Screen
+        name="RegistrationScreen"
+        component={RegistrationScreen}
+        options={{ title: 'Registration' }}
+      />
+    </Stack.Navigator>
+  );
+};
 export default App;
