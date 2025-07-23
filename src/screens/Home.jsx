@@ -6,9 +6,6 @@ import { styles } from '../style';
 const Home = ({ route }) => {
   const navigation = useNavigation();
   const { users } = route?.params || {};
-  console.log('====================================');
-  console.log(users);
-  console.log('====================================');
   return (
     <View style={[styles.paddings, { flex: 1 }]}>
       {users ? (
@@ -20,14 +17,20 @@ const Home = ({ route }) => {
         <Text>No user data found</Text>
       )}
 
-      <Button
-        title="Go to About"
-        onPress={() => navigation.navigate('AboutScreen')}
-      />
-      <Button
-        title="Go to Login"
-        onPress={() => navigation.navigate('LoginScreen')}
-      />
+      <View className="flex flex-col gap-5">
+        <Button
+          title="Go to About"
+          onPress={() => navigation.navigate('AboutScreen')}
+        />
+        <Button
+          title="Go to Login"
+          onPress={() => navigation.navigate('LoginScreen')}
+        />
+        <Button
+          title="Go to Users"
+          onPress={() => navigation.navigate('UsersScreen')}
+        />
+      </View>
     </View>
   );
 };

@@ -32,6 +32,7 @@ import AboutScreen from './src/screens/About';
 import LoginScreen from './src/auth/Login';
 import RegistrationScreen from './src/auth/Registration';
 import ResetPasswordScreen from './src/auth/ResetPassword';
+import UsersScreen from './src/screens/users/FirestoreUsers';
 import Calls from './src/screens/topTab/Calls';
 import Status from './src/screens/topTab/Status';
 import { StatusBar, View } from 'react-native';
@@ -115,6 +116,11 @@ const MainStack = () => {
       <Stack.Screen
         name="ResetPasswordScreen"
         component={ResetPasswordScreen}
+        options={{ title: 'Password Reset' }}
+      />
+      <Stack.Screen
+        name="UsersScreen"
+        component={UsersScreen}
         options={{ title: 'Password Reset' }}
       />
     </Stack.Navigator>
