@@ -30,6 +30,10 @@ const Home = ({ route }) => {
           title="Go to Users"
           onPress={() => navigation.navigate('UsersScreen')}
         />
+        <Button
+          title="Go to realtime Users"
+          onPress={() => navigation.navigate('UsersScreenRealTime')}
+        />
       </View>
     </View>
   );

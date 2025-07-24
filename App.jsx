@@ -33,6 +33,7 @@ import LoginScreen from './src/auth/Login';
 import RegistrationScreen from './src/auth/Registration';
 import ResetPasswordScreen from './src/auth/ResetPassword';
 import UsersScreen from './src/screens/users/FirestoreUsers';
+import UsersScreenRealTime from './src/screens/users/FirebaseRealTimeUser';
 import Calls from './src/screens/topTab/Calls';
 import Status from './src/screens/topTab/Status';
 import { StatusBar, View } from 'react-native';
@@ -122,6 +123,11 @@ const MainStack = () => {
         name="UsersScreen"
         component={UsersScreen}
         options={{ title: 'Password Reset' }}
+      />
+      <Stack.Screen
+        name="UsersScreenRealTime"
+        component={UsersScreenRealTime}
+        options={{ title: 'Users RealTime' }}
       />
     </Stack.Navigator>
   );
