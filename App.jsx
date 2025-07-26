@@ -2,6 +2,7 @@ import React from 'react';
 import './global.css';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
+import BootSplash from 'react-native-bootsplash';
 // import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import Home from './src/screens/tabBottom/Home';
 // import Earn from './src/screens/tabBottom/Earn';
@@ -47,7 +48,9 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <NavigationContainer
+        onReady={async () => await BootSplash.hide({ fade: true })}
+      >
         <View
           style={{
             paddingTop: StatusBar.currentHeight,
